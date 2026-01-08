@@ -1,0 +1,4 @@
+<div class="table-container{{ with .Get "wide" }} wide{{ end }}">
+  {{ .Inner | markdownify }}
+  {{ with .Get "caption" }}<p class="table-caption">{{ . }}</p>{{ end }}
+</div>

@@ -1,0 +1,283 @@
+/* APS Journal Style Overrides */
+
+/* 1. Justified text alignment */
+body {
+  text-align: justify;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+}
+
+.post p,
+.post li,
+.post blockquote {
+  text-align: justify;
+}
+
+/* Drop cap styling */
+.post .drop-cap {
+  font-size: 5.8em;
+  float: left;
+  line-height: 1;
+  margin: -0.09em 0.03em -0.1em -0.05em;
+}
+
+@media (max-width: 899px) {
+  .post .drop-cap {
+    font-size: 5.2em;
+  }
+}
+
+/* 2. Two-column layout for article content */
+@media (min-width: 900px) {
+  .post-content {
+    column-count: 2;
+    column-gap: 2.5em;
+    column-rule: 1px solid #e5e5e5;
+  }
+
+  /* Single-column mode (per-post override) */
+  .post-content.single-column {
+    column-count: 1;
+  }
+
+  /* Code blocks span both columns by default */
+  .post-content .highlight,
+  .post-content pre {
+    column-span: all;
+  }
+
+  /* Wide figures/plots span both columns */
+  .post-content figure.wide,
+  .post-content .wide {
+    column-span: all;
+  }
+
+  /* Inline figures stay in their column (default) */
+  .post-content figure:not(.wide),
+  .post-content .plot-container:not(.wide) {
+    break-inside: avoid;
+    max-width: 100%;
+  }
+
+  .post-content figure:not(.wide) img {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  /* Prevent orphaned elements at column breaks */
+  .post-content p {
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* Wider container to accommodate two columns */
+  main,
+  .post {
+    max-width: 52em;
+  }
+}
+
+/* 3. Numbered footnotes - APS superscript style */
+.footnote-ref {
+  font-size: 0.75em;
+  vertical-align: super;
+  line-height: 0;
+  text-decoration: none;
+}
+
+/* Style the footnotes section at the bottom */
+.footnotes {
+  column-span: all;
+  margin-top: 2em;
+  padding-top: 1em;
+  border-top: 1px solid #e5e5e5;
+  font-size: 0.9em;
+}
+
+.footnotes ol {
+  padding-left: 1.5em;
+}
+
+.footnotes li {
+  margin-bottom: 0.5em;
+}
+
+/* Back-reference link in footnotes */
+.footnotes .footnote-backref {
+  font-size: 0.8em;
+  text-decoration: none;
+  margin-left: 0.3em;
+}
+
+/* 4. KaTeX equation styling */
+.katex-display {
+  margin: 1em 0;
+  overflow: visible;
+  padding: 0.2em 0;
+}
+
+/* Inline math styling */
+.katex {
+  font-size: 1.05em;
+}
+
+/* Plot container and caption styling */
+.plot-container {
+  display: block;
+  width: 100%;
+}
+
+.plot-container.wide {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.plot-caption {
+  display: block;
+  text-align: center !important;
+  font-size: 0.9em;
+  font-style: italic;
+  margin-top: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* APS-style ruled tables */
+.post-content table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.5em 0;
+  font-size: 0.95em;
+}
+
+.post-content table thead {
+  border-top: 2px solid currentColor;
+  border-bottom: 1px solid currentColor;
+}
+
+.post-content table tbody {
+  border-bottom: 2px solid currentColor;
+}
+
+.post-content table th,
+.post-content table td {
+  padding: 0.5em 0.75em;
+  text-align: left;
+}
+
+.post-content table th {
+  font-weight: bold;
+}
+
+.post-content table code {
+  font-size: 0.9em;
+}
+
+/* Table container for wide/narrow control */
+.table-container {
+  display: block;
+  width: 100%;
+  margin: 1.5em 0;
+}
+
+.table-container table {
+  margin: 0;
+}
+
+.table-caption {
+  text-align: center !important;
+  font-size: 0.9em;
+  font-style: italic;
+  margin-top: 0.5em;
+}
+
+@media (min-width: 900px) {
+  .table-container.wide {
+    column-span: all;
+  }
+
+  .table-container:not(.wide) {
+    break-inside: avoid;
+    max-width: 100%;
+  }
+}
+
+/* Code container for wide/narrow control */
+.code-container {
+  display: block;
+  width: 100%;
+  margin: 1.5em 0;
+}
+
+.code-container .highlight,
+.code-container pre {
+  margin: 0;
+}
+
+.code-caption {
+  text-align: center !important;
+  font-size: 0.9em;
+  font-style: italic;
+  margin-top: 0.5em;
+}
+
+@media (min-width: 900px) {
+  .code-container.wide {
+    column-span: all;
+  }
+
+  .code-container:not(.wide) {
+    break-inside: avoid;
+    max-width: 100%;
+  }
+
+  /* Override default code block spanning */
+  .post-content .code-container .highlight,
+  .post-content .code-container pre {
+    column-span: none;
+  }
+}
+
+/* Column break (single) */
+.column-break {
+  break-before: column;
+}
+
+/* Section break (double) - spans both columns */
+.section-break {
+  column-span: all;
+  width: 100%;
+  margin: 2em 0 1em;
+}
+
+.section-break-rule {
+  border: none;
+  border-top: 2px solid currentColor;
+  margin: 0 0 1em;
+  opacity: 0.4;
+}
+
+.section-break h2.section-break-title {
+  text-align: center !important;
+  margin: 0 !important;
+  font-size: 2.2em !important;
+  line-height: 1.2 !important;
+  font-weight: 800;
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  .post-content {
+    column-rule-color: #333;
+  }
+
+  .footnotes {
+    border-top-color: #333;
+  }
+}

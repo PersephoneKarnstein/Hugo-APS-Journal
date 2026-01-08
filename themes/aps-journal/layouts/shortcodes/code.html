@@ -1,0 +1,4 @@
+<div class="code-container{{ with .Get "wide" }} wide{{ end }}">
+  {{ highlight (trim .Inner "\n") (.Get "lang" | default "text") }}
+  {{ with .Get "caption" }}<p class="code-caption">{{ . }}</p>{{ end }}
+</div>

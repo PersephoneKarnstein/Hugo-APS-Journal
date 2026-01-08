@@ -1,0 +1,21 @@
+<a href="{{ .Permalink | relURL }}" class="catalogue-item">
+    <div>
+        <time datetime="{{ .PublishDate }}" class="catalogue-time">{{ i18n "publishdate" . }}</time>{{ if .Site.Params.DisplayReadTime }}<span class="catalogue-time"> | {{ .ReadingTime }}&nbsp;minute read</span>{{ end }}
+        <h1 class="catalogue-title">{{ .Title }}</h1>
+        <div class="catalogue-line"></div>
+
+        {{ if not .Site.Params.DisableSummary }}
+            <p>
+                {{- $summary := "" -}}
+                {{- if isset .Params "summary" -}}
+                    {{- $summary = .Params.Summary | markdownify -}}
+                {{- else -}}
+                    {{- $summary = .Summary -}}
+                {{- end -}}
+                {{- $summary = $summary | replaceRE `<sup id="fnref[^"]*"[^>]*>.*?</sup>` "" -}}
+                {{- $summary = $summary | replaceRE `(?s)<h2.*` "" -}}
+                {{- $summary | replaceRE "\\b([A-Z][A-Z0-9\\-]{2,})\\b" "<abbr>$1</abbr>" | safeHTML -}}
+            </p>
+        {{ end }}
+    </div>
+</a>

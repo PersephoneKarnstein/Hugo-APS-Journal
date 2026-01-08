@@ -1,0 +1,13 @@
+name = "APS Journal"
+license = "MIT"
+licenselink = "https://github.com/example/aps-journal/blob/main/LICENSE"
+description = "A Hugo theme styled like APS (American Physical Society) journal articles, with two-column layout, KaTeX math support, syntax highlighting, and academic features."
+homepage = "https://github.com/example/aps-journal"
+min_version = "0.120.0"
+
+[author]
+  name = "Persephone"
+
+[params]
+  math = true
+  plotly = true
