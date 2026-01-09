@@ -7,3 +7,6 @@ resources/_gen/
 
 # OS files
 .DS_Store
+
+# Posts
+content/post/
