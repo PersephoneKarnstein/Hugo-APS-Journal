@@ -14,7 +14,9 @@
                 {{- end -}}
                 {{- $summary = $summary | replaceRE `<sup id="fnref[^"]*"[^>]*>.*?</sup>` "" -}}
                 {{- $summary = $summary | replaceRE `(?s)<h2.*` "" -}}
-                {{- $summary | replaceRE "\\b([A-Z][A-Z0-9\\-]{2,})\\b" "<abbr>$1</abbr>" | safeHTML -}}
+                {{- $summary = $summary | replaceRE "\\b([A-Z][A-Z0-9\\-]{2,})\\b" "<abbr>$1</abbr>" -}}
+                {{- $summary = $summary | replaceRE `(\\\([^)]*)<abbr>([A-Z0-9]+)</abbr>([^)]*\\\))` "$1$2$3" -}}
+                {{- $summary | safeHTML -}}
             </p>
         {{ end }}
     </div>
