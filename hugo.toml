@@ -4,9 +4,13 @@ title = 'Persephone.meow'
 theme = 'aps-journal'
 type = 'post'
 
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
 [Params]
   math = true
   plotly = true
+  search = true
 
 [Params.DropCap]
   Enable = true

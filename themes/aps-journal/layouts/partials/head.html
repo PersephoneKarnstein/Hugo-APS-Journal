@@ -67,6 +67,9 @@
 		<!-- APS Journal theme styles -->
 		<link rel="stylesheet" href="/css/aps-style.css">
 		<link rel="stylesheet" href="/css/syntax.css">
+		{{ if .Site.Params.search }}
+		<link rel="stylesheet" href="/css/search.css">
+		{{ end }}
 
 		{{ range .Site.Params.css -}}
 			<link rel="stylesheet" href="{{ . | relURL }}">
@@ -117,6 +120,12 @@
 		<!-- Font Awesome -->
 		<script defer src="/js/fontawesome/all.min.js"></script>
 		<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" crossorigin="anonymous"> -->
+
+		{{ if .Site.Params.search }}
+		<!-- Lunr.js Search -->
+		<script src="/js/lunr.min.js"></script>
+		<script src="/js/search.js"></script>
+		{{ end }}
 
 		<!-- Favicon -->
 		<link rel="icon" type="image/png" sizes="32x32" href="{{ "images/favicon-32x32.png" | relURL }}">
