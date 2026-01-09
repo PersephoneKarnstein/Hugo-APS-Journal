@@ -15,5 +15,23 @@
 					<div id="search-results" class="search-results" role="listbox"></div>
 				</div>
 				{{ end }}
+				{{ if .Site.Params.tagFilter }}
+				<div class="tag-filter-wrapper">
+					<button class="tag-filter-icon" aria-label="Filter by tag" type="button">
+						<i class="fas fa-tag"></i>
+					</button>
+					<div class="tag-filter-dropdown" role="listbox">
+						<div class="tag-filter-item tag-filter-all selected" data-tag="">
+							<span>All Posts</span>
+						</div>
+						{{ range $name, $taxonomy := .Site.Taxonomies.tags }}
+						<div class="tag-filter-item" data-tag="{{ $name }}">
+							<span>{{ $name }}</span>
+							<span class="tag-count">{{ len $taxonomy }}</span>
+						</div>
+						{{ end }}
+					</div>
+				</div>
+				{{ end }}
 			</div>
 		</nav>

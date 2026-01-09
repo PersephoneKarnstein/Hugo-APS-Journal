@@ -1,11 +1,11 @@
-<a href="{{ .Permalink | relURL }}" class="catalogue-item">
+<a href="{{ .Permalink | relURL }}" class="catalogue-item" data-tags="{{ delimit .Params.tags "," }}">
     <div>
         <time datetime="{{ .PublishDate }}" class="catalogue-time">{{ i18n "publishdate" . }}</time>{{ if .Site.Params.DisplayReadTime }}<span class="catalogue-time"> | {{ .ReadingTime }}&nbsp;minute read</span>{{ end }}
         <h1 class="catalogue-title">{{ .Title }}</h1>
         <div class="catalogue-line"></div>
 
         {{ if not .Site.Params.DisableSummary }}
-            <p>
+            <div class="catalogue-summary">
                 {{- $summary := "" -}}
                 {{- if isset .Params "summary" -}}
                     {{- $summary = .Params.Summary | markdownify -}}
@@ -14,10 +14,11 @@
                 {{- end -}}
                 {{- $summary = $summary | replaceRE `<sup id="fnref[^"]*"[^>]*>.*?</sup>` "" -}}
                 {{- $summary = $summary | replaceRE `(?s)<h2.*` "" -}}
+                {{- $summary = $summary | replaceRE `<a[^>]*>([^<]*)</a>` "$1" -}}
                 {{- $summary = $summary | replaceRE "\\b([A-Z][A-Z0-9\\-]{2,})\\b" "<abbr>$1</abbr>" -}}
                 {{- $summary = $summary | replaceRE `(\\\([^)]*)<abbr>([A-Z0-9]+)</abbr>([^)]*\\\))` "$1$2$3" -}}
                 {{- $summary | safeHTML -}}
-            </p>
+            </div>
         {{ end }}
     </div>
 </a>

@@ -70,6 +70,9 @@
 		{{ if .Site.Params.search }}
 		<link rel="stylesheet" href="/css/search.css">
 		{{ end }}
+		{{ if .Site.Params.tagFilter }}
+		<link rel="stylesheet" href="/css/tag-filter.css">
+		{{ end }}
 
 		{{ range .Site.Params.css -}}
 			<link rel="stylesheet" href="{{ . | relURL }}">
@@ -125,6 +128,10 @@
 		<!-- Lunr.js Search -->
 		<script src="/js/lunr.min.js"></script>
 		<script src="/js/search.js"></script>
+		{{ end }}
+		{{ if .Site.Params.tagFilter }}
+		<!-- Tag Filter -->
+		<script src="/js/tag-filter.js"></script>
 		{{ end }}
 
 		<!-- Favicon -->
