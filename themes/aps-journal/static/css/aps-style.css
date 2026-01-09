@@ -393,6 +393,7 @@ body {
 .toc-content #toc-list {
   font-size: 0.9em;
   line-height: 1.6;
+  text-align: left;
 }
 
 .toc-content #toc-list ul {
@@ -437,6 +438,29 @@ body {
 
 .toc-content #toc-list a.active .toc-number {
   font-weight: 700;
+}
+
+/* Title link at top of TOC */
+.toc-content #toc-list li.toc-title-link {
+  margin-bottom: 1em;
+  padding-bottom: 0.75em;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.toc-content #toc-list li.toc-title-link a {
+  font-weight: 600;
+  font-style: italic;
+}
+
+/* Footnotes link at bottom of TOC */
+.toc-content #toc-list li.toc-footnotes-link {
+  margin-top: 1em;
+  padding-top: 0.75em;
+  border-top: 1px solid #e5e5e5;
+}
+
+.toc-content #toc-list li.toc-footnotes-link a {
+  font-style: italic;
 }
 
 /* Main content shift when TOC is open */

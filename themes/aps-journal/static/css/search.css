@@ -1,11 +1,18 @@
+/* Fix nav overflow to allow search results to extend beyond nav bar */
+.nav {
+  overflow: visible !important;
+}
+
 .nav-container {
   display: flex;
   align-items: center;
+  overflow: visible !important;
 }
 
 .search-wrapper {
   position: relative;
   margin-left: auto;
+  z-index: 1001;
 }
 
 .search-container {
@@ -79,29 +86,26 @@
   color: #333;
 }
 
-/* Results dropdown */
+/* Results dropdown - positioned outside nav to avoid clipping */
 .search-results {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  min-width: 320px;
+  position: fixed;
+  width: 400px;
   max-height: 400px;
   overflow-y: auto;
   background: #fff;
   border: 1px solid #e5e5e5;
   border-radius: 4px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-  margin-top: 4px;
-  display: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 9999;
   opacity: 0;
+  visibility: hidden;
   transform: translateY(-8px);
-  transition: opacity 0.15s ease, transform 0.15s ease;
+  transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s ease;
 }
 
 .search-results.visible {
-  display: block;
   opacity: 1;
+  visibility: visible;
   transform: translateY(0);
 }
 
@@ -175,7 +179,7 @@
   }
 
   .search-results {
-    min-width: 280px;
+    width: 280px;
     max-height: 60vh;
   }
 }

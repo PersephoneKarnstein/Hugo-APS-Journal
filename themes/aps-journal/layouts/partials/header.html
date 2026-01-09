@@ -12,7 +12,6 @@
 							<i class="fas fa-search"></i>
 						</button>
 					</div>
-					<div id="search-results" class="search-results" role="listbox"></div>
 				</div>
 				{{ end }}
 				{{ if .Site.Params.tagFilter }}
@@ -35,3 +34,6 @@
 				{{ end }}
 			</div>
 		</nav>
+		{{ if .Site.Params.search }}
+		<div id="search-results" class="search-results" role="listbox"></div>
+		{{ end }}

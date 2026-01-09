@@ -23,11 +23,22 @@
       return;
     }
 
+    // Get article title
+    var titleElement = document.querySelector('.post-title');
+    var articleTitle = titleElement ? titleElement.textContent.trim() : 'Top';
+
+    // Check for footnotes section
+    var footnotesSection = postContent.querySelector('.footnotes');
+
     // Build the TOC with hierarchical numbering
     var tocHTML = '<ul>';
     var headingData = [];
     var h2Counter = 0;
     var h3Counter = 0;
+
+    // Add title link at the top
+    tocHTML += '<li class="toc-title-link"><a href="#top">' + articleTitle + '</a></li>';
+    headingData.push({ element: titleElement || document.body, id: 'top', isTitle: true });
 
     headings.forEach(function(heading, index) {
       // Ensure heading has an ID for linking
@@ -54,6 +65,15 @@
       var cssClass = level === 'h3' ? ' class="toc-h3"' : '';
       tocHTML += '<li' + cssClass + '><a href="#' + id + '"><span class="toc-number">' + number + '</span> ' + text + '</a></li>';
     });
+
+    // Add footnotes link at the bottom if footnotes exist
+    if (footnotesSection) {
+      if (!footnotesSection.id) {
+        footnotesSection.id = 'footnotes';
+      }
+      tocHTML += '<li class="toc-footnotes-link"><a href="#' + footnotesSection.id + '">Footnotes</a></li>';
+      headingData.push({ element: footnotesSection, id: footnotesSection.id, isFootnotes: true });
+    }
 
     tocHTML += '</ul>';
     tocContainer.innerHTML = tocHTML;
@@ -121,12 +141,17 @@
       link.addEventListener('click', function(e) {
         var id = this.getAttribute('href');
         if (id && id.startsWith('#')) {
-          var target = document.getElementById(id.substring(1));
-          if (target) {
-            e.preventDefault();
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            history.pushState(null, null, id);
+          e.preventDefault();
+          if (id === '#top') {
+            // Scroll to top of page for title link
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          } else {
+            var target = document.getElementById(id.substring(1));
+            if (target) {
+              target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
           }
+          history.pushState(null, null, id);
         }
       });
     });

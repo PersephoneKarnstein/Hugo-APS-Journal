@@ -9,9 +9,30 @@
     const items = document.querySelectorAll('.tag-filter-item');
     const catalogue = document.querySelector('.catalogue');
 
-    if (!wrapper || !dropdown || !catalogue) return;
+    if (!wrapper || !dropdown) return;
 
     let currentTag = '';
+
+    // Check for tag parameter in URL on page load (only on home page with catalogue)
+    if (catalogue) {
+      const urlParams = new URLSearchParams(window.location.search);
+      const tagParam = urlParams.get('tag');
+      if (tagParam) {
+        currentTag = tagParam;
+        // Update selection state
+        items.forEach(function(item) {
+          if (item.getAttribute('data-tag') === tagParam) {
+            item.classList.add('selected');
+          } else {
+            item.classList.remove('selected');
+          }
+        });
+        // Update icon state
+        icon.classList.add('filtering');
+        // Filter posts
+        filterPosts(tagParam);
+      }
+    }
 
     // Handle tag selection
     items.forEach(function(item) {
@@ -19,6 +40,17 @@
         e.stopPropagation();
 
         const tag = this.getAttribute('data-tag');
+
+        // If not on the home page (no catalogue), navigate to home with tag parameter
+        if (!catalogue) {
+          const baseUrl = window.location.origin + '/';
+          if (tag) {
+            window.location.href = baseUrl + '?tag=' + encodeURIComponent(tag);
+          } else {
+            window.location.href = baseUrl;
+          }
+          return;
+        }
 
         // Update selection state
         items.forEach(function(i) {
@@ -38,6 +70,15 @@
 
         // Filter posts
         filterPosts(tag);
+
+        // Update URL without page reload
+        const url = new URL(window.location);
+        if (tag) {
+          url.searchParams.set('tag', tag);
+        } else {
+          url.searchParams.delete('tag');
+        }
+        window.history.replaceState({}, '', url);
       });
     });
 
