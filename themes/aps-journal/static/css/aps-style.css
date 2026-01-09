@@ -281,3 +281,216 @@ body {
     border-top-color: #333;
   }
 }
+
+/* ============================================
+   Table of Contents Sidebar
+   ============================================ */
+
+/* TOC Sidebar container */
+.toc-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 280px;
+  background: #fafafa;
+  border-right: 1px solid #e5e5e5;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+}
+
+.toc-sidebar.open {
+  transform: translateX(0);
+}
+
+/* TOC toggle button */
+.toc-toggle {
+  position: absolute;
+  top: 50%;
+  right: -40px;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 80px;
+  background: #fafafa;
+  border: 1px solid #e5e5e5;
+  border-left: none;
+  border-radius: 0 8px 8px 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+}
+
+.toc-toggle:hover {
+  background: #f0f0f0;
+}
+
+/* Toggle icon (hamburger-style lines) */
+.toc-toggle-icon {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: #333;
+  position: relative;
+}
+
+.toc-toggle-icon::before,
+.toc-toggle-icon::after {
+  content: '';
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: #333;
+  position: absolute;
+  left: 0;
+  transition: transform 0.2s ease;
+}
+
+.toc-toggle-icon::before {
+  top: -6px;
+}
+
+.toc-toggle-icon::after {
+  top: 6px;
+}
+
+/* Transform to X when open */
+.toc-sidebar.open .toc-toggle-icon {
+  background: transparent;
+}
+
+.toc-sidebar.open .toc-toggle-icon::before {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.toc-sidebar.open .toc-toggle-icon::after {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* TOC content area */
+.toc-content {
+  padding: 2em 1.5em;
+  overflow-y: auto;
+  flex: 1;
+  margin-top: 60px; /* Space for header */
+}
+
+.toc-title {
+  font-size: 1.1em;
+  font-weight: 700;
+  margin: 0 0 1em 0;
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid #e5e5e5;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Style the TOC nav */
+.toc-content #toc-list {
+  font-size: 0.9em;
+  line-height: 1.6;
+}
+
+.toc-content #toc-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.toc-content #toc-list > ul > li {
+  margin-bottom: 0.75em;
+}
+
+.toc-content #toc-list li.toc-h3 {
+  padding-left: 1em;
+  margin-bottom: 0.4em;
+}
+
+.toc-content #toc-list a {
+  color: #555;
+  text-decoration: none;
+  display: block;
+  padding: 0.2em 0;
+  transition: color 0.2s ease;
+}
+
+.toc-content #toc-list a:hover {
+  color: #000;
+}
+
+/* Section numbers */
+.toc-content #toc-list .toc-number {
+  font-weight: 600;
+  min-width: 2em;
+  display: inline-block;
+}
+
+/* Active section highlighting */
+.toc-content #toc-list a.active {
+  color: #000;
+  font-weight: 600;
+}
+
+.toc-content #toc-list a.active .toc-number {
+  font-weight: 700;
+}
+
+/* Main content shift when TOC is open */
+body {
+  transition: padding-left 0.3s ease;
+}
+
+body.toc-open {
+  padding-left: 280px;
+}
+
+/* Hide TOC on small screens, show toggle only on larger screens */
+@media (max-width: 1200px) {
+  .toc-sidebar {
+    display: none;
+  }
+}
+
+/* Dark mode for TOC */
+@media (prefers-color-scheme: dark) {
+  .toc-sidebar {
+    background: #1a1a1a;
+    border-right-color: #333;
+  }
+
+  .toc-toggle {
+    background: #1a1a1a;
+    border-color: #333;
+  }
+
+  .toc-toggle:hover {
+    background: #252525;
+  }
+
+  .toc-toggle-icon,
+  .toc-toggle-icon::before,
+  .toc-toggle-icon::after {
+    background: #ccc;
+  }
+
+  .toc-sidebar.open .toc-toggle-icon {
+    background: transparent;
+  }
+
+  .toc-title {
+    border-bottom-color: #333;
+  }
+
+  .toc-content #toc-list a {
+    color: #aaa;
+  }
+
+  .toc-content #toc-list a:hover,
+  .toc-content #toc-list a.active {
+    color: #fff;
+  }
+}

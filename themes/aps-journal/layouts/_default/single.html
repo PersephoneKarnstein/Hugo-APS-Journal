@@ -1,5 +1,16 @@
 {{ define "main" }}
 
+{{/* TOC Sidebar - JS will populate and hide if no headings */}}
+<aside class="toc-sidebar" id="toc-sidebar">
+    <button class="toc-toggle" id="toc-toggle" aria-label="Toggle table of contents">
+        <span class="toc-toggle-icon"></span>
+    </button>
+    <div class="toc-content">
+        <h2 class="toc-title">Contents</h2>
+        <nav id="toc-list"></nav>
+    </div>
+</aside>
+
 <main>
     <div class="post">
         {{ partial "single/title.html" . }}
