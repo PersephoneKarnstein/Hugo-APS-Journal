@@ -4,6 +4,7 @@ draft = true
 title = 'APS-Style Features Guide'
 author = 'Persephone'
 type = 'post'
+tags = ['tutorial', 'features']
 +++
 
 This post demonstrates all the APS journal-style features available on this site.[^features] The layout automatically uses justified text and switches to a two-column format on wider screens. Below you'll find examples of each feature along with the markdown syntax used to create them.
@@ -85,6 +86,29 @@ The plot below demonstrates a wide interactive figure. Hover over the energy lev
 {{< plot id="hydrogen-energy-plot" src="/js/hydrogen-energy-plot.js" wide="true" caption="Figure 2: An interactive Plotly chart spanning both columns. Hover over each line to see the energy value." >}}
 
 The JavaScript file (`/static/js/hydrogen-energy-plot.js`) should use `document.addEventListener('DOMContentLoaded', ...)` to ensure the DOM is ready before rendering.
+
+**Python Plotly**
+
+You can also code plots in Python, as long as you export them as .json files.
+
+```python
+import plotly.express as px
+
+fig = px.scatter(df, x="sepal_width", y="sepal_length", color="species")
+fig.write_json("static/plots/my-scatter.json")
+```
+
+In your markdown, use the new shortcode:
+
+```markdown
+{{</* plotly-json id="my-scatter" src="/plots/my-scatter.json" caption="Figure 1: Iris scatter plot" */>}}
+```
+
+With wide layout (spans both columns):
+
+```markdown
+{{</* plotly-json id="my-scatter" src="/plots/my-scatter.json" caption="Figure 1: Iris scatter plot" wide="true" */>}}
+```
 
 ## Code Blocks
 
@@ -182,6 +206,7 @@ All features documented above work together with the two-column layout, automati
 | Display math | `\[x\]` | — |
 | Figure | `fig` shortcode | `src`, `caption`, `wide` |
 | Plot | `plot` shortcode | `id`, `src`, `caption`, `wide` |
+| Plotly JSON | `plotly-json` shortcode | `id`, `src`, `caption`, `wide` |
 | Code | ` ```lang {attrs}` | `wide`, `caption` |
 | Table | `<!-- table: attrs -->` | `wide`, `caption` |
 | Column break | `colbreak` shortcode | — |

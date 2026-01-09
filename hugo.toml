@@ -11,6 +11,7 @@ type = 'post'
   math = true
   plotly = true
   search = true
+  tagFilter = true
 
 [Params.DropCap]
   Enable = true

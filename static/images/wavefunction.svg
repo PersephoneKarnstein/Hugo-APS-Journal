@@ -7,7 +7,7 @@
 
   <!-- Axis labels -->
   <text x="210" y="195" font-family="serif" font-size="14" text-anchor="middle" font-style="italic">x</text>
-  <text x="20" y="100" font-family="serif" font-size="14" text-anchor="middle" font-style="italic">|\u03A8|^2</text>
+  <text x="20" y="100" font-family="serif" font-size="14" text-anchor="middle" font-style="italic">|psi|^2</text>
 
   <!-- Grid lines -->
   <g stroke="#ddd" stroke-width="0.5">
