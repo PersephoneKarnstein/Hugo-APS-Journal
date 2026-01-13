@@ -411,6 +411,12 @@ body {
   margin-bottom: 0.4em;
 }
 
+.toc-content #toc-list li.toc-h4 {
+  padding-left: 2em;
+  margin-bottom: 0.3em;
+  font-size: 0.9em;
+}
+
 .toc-content #toc-list a {
   color: #555;
   text-decoration: none;
