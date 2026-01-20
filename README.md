@@ -51,6 +51,8 @@
 
 ## About The Project
 
+![Screen Shot](static/images/screenshot.png)
+
 APS Journal is a Hugo theme designed for academic writing, technical blogs, and journal-style publishing. It features a sophisticated two-column layout, automatic figure numbering, KaTeX math rendering, and a carefully crafted dark/light mode toggle.
 
 ### Features
