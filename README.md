@@ -9,6 +9,7 @@
 <br />
 <div align="center">
   <h1>APS Journal Theme</h1>
+  <img src="static/images/screenshot.png" alt="Screenshot">
   <p>
     A Hugo theme for academic and journal-style publishing, inspired by American Physical Society formatting.
     <br />
@@ -50,8 +51,6 @@
 </details>
 
 ## About The Project
-
-![Screen Shot](static/images/screenshot.png)
 
 APS Journal is a Hugo theme designed for academic writing, technical blogs, and journal-style publishing. It features a sophisticated two-column layout, automatic figure numbering, KaTeX math rendering, and a carefully crafted dark/light mode toggle.
 
