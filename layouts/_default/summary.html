@@ -53,7 +53,10 @@
                 {{- end -}}
                 {{- /* Apply abbr styling to acronyms, avoiding math expressions and HTML attributes */ -}}
                 {{- $result = $result | replaceRE "\\b([A-Z][A-Z0-9\\-]{2,})\\b" "<abbr>$1</abbr>" -}}
-                {{- $result = $result | replaceRE `(\\\(.*?)<abbr>([A-Z0-9]+)</abbr>(.*?\\\))` "$1$2$3" -}}
+                {{- /* Strip abbr tags from inside math expressions - apply multiple times */ -}}
+                {{- range seq 5 -}}
+                    {{- $result = $result | replaceRE `(\\\(.*?)<abbr>([^<]+)</abbr>(.*?\\\))` "$1$2$3" -}}
+                {{- end -}}
                 {{- /* Strip abbr tags from inside HTML tag attributes */ -}}
                 {{- range seq 5 -}}
                     {{- $result = $result | replaceRE `(<[a-zA-Z][^>]*)<abbr>([^<]+)</abbr>([^>]*>)` "$1$2$3" -}}
