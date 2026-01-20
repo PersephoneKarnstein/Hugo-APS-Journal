@@ -1,0 +1,5 @@
+<div class="plot-container{{ with .Get "wide" }} wide{{ end }}">
+  <div id="{{ .Get "id" }}"></div>
+  <script src="{{ .Get "src" }}"></script>
+  {{ with .Get "caption" }}<p class="plot-caption">{{ . }}</p>{{ end }}
+</div>

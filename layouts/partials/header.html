@@ -1,0 +1,42 @@
+		<nav class="nav">
+			<div class="nav-container">
+				<a href="{{ "/" | relURL }}">
+					<h1 class="nav-title">{{ .Site.Title }}</h1>
+				</a>
+				{{ partial "header-menu.html" . }}
+				{{ if .Site.Params.search }}
+				<div class="search-wrapper">
+					<div class="search-container">
+						<input type="text" id="search-input" class="search-input" placeholder="Search..." autocomplete="off" aria-label="Search">
+						<button class="search-icon" aria-label="Search" type="button">
+							<i class="fas fa-search"></i>
+						</button>
+					</div>
+				</div>
+				{{ end }}
+				{{ if .Site.Params.tagFilter }}
+				<div class="tag-filter-wrapper">
+					<button class="tag-filter-icon" aria-label="Filter by tag" type="button">
+						<i class="fas fa-tag"></i>
+					</button>
+					<div class="tag-filter-dropdown" role="listbox">
+						<div class="tag-filter-item tag-filter-all selected" data-tag="">
+							<span>All Posts</span>
+						</div>
+						{{ range $name, $taxonomy := .Site.Taxonomies.tags }}
+						<div class="tag-filter-item" data-tag="{{ $name }}">
+							<span>{{ $name }}</span>
+							<span class="tag-count">{{ len $taxonomy }}</span>
+						</div>
+						{{ end }}
+					</div>
+				</div>
+				{{ end }}
+				<button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" type="button">
+					<i class="fas fa-lightbulb"></i>
+				</button>
+			</div>
+		</nav>
+		{{ if .Site.Params.search }}
+		<div id="search-results" class="search-results" role="listbox"></div>
+		{{ end }}

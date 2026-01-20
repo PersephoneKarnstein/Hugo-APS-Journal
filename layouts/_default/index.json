@@ -1,0 +1,15 @@
+{{- $.Scratch.Add "index" slice -}}
+{{- range .Site.RegularPages -}}
+  {{- if not .Params.draft -}}
+    {{- $.Scratch.Add "index" (dict
+      "title" .Title
+      "permalink" .Permalink
+      "summary" (.Summary | plainify | truncate 200)
+      "content" (.Plain | truncate 5000)
+      "date" (.Date.Format "2006-01-02")
+      "section" .Section
+      "tags" .Params.tags
+    ) -}}
+  {{- end -}}
+{{- end -}}
+{{- $.Scratch.Get "index" | jsonify -}}

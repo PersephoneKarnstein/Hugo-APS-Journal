@@ -1,0 +1,96 @@
+/* alegreya-regular - latin-ext_latin */
+@font-face {
+  font-family: 'Alegreya';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local(''),
+       url('/fonts/alegreya-regular.woff2') format('woff2'),
+       url('/fonts/alegreya-regular.woff') format('woff'),
+}
+
+/* alegreya-italic - latin-ext_latin */
+@font-face {
+  font-family: 'Alegreya';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local(''),
+       url('/fonts/alegreya-italic.woff2') format('woff2'),
+       url('/fonts/alegreya-italic.woff') format('woff'),
+}
+
+/* alegreya-sans-extrabold - latin-ext_latin */
+@font-face {
+  font-family: 'Alegreya Sans';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: local(''),
+       url('/fonts/alegreya-sans-extrabold.woff2') format('woff2'),
+       url('/fonts/alegreya-sans-extrabold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Fira mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local(''),
+       url('/fonts/fira-mono-regular.woff2') format('woff2'),
+       url('/fonts/fira-mono-regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/inconsolata-regular.woff2') format('woff2'),
+       url('/fonts/inconsolata-regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Inconsolata';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/inconsolata-regular.woff2') format('woff2'),
+       url('/fonts/inconsolata-regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/inconsolata-bold.woff2') format('woff2'),
+       url('/fonts/inconsolata-bold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Inconsolata';
+  font-style: italic;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/inconsolata-bold.woff2') format('woff2'),
+       url('/fonts/inconsolata-bold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'IM Fell English SC';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/IMFellEnglishSC-Regular.woff2') format('woff2'),
+       url('/fonts/IMFellEnglishSC-Regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Jim Nightshade';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/JimNightshade-Regular.woff2') format('woff2'),
+       url('/fonts/JimNightshade-Regular.woff') format('woff');
+}

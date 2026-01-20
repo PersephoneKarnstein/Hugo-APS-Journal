@@ -1,0 +1,6 @@
+{{- $wide := .Attributes.wide -}}
+{{- $caption := .Attributes.caption -}}
+<div class="code-container{{ if $wide }} wide{{ end }}">
+  {{- highlight .Inner .Type .Options -}}
+  {{- with $caption }}<p class="code-caption">{{ . }}</p>{{ end -}}
+</div>

@@ -1,0 +1,32 @@
+<div class="plot-container{{ with .Get "wide" }} wide{{ end }}">
+  <div id="{{ .Get "id" }}"></div>
+  <script>
+    (function() {
+      var plotId = "{{ .Get "id" }}";
+      var jsonSrc = "{{ .Get "src" }}";
+
+      function renderPlot() {
+        fetch(jsonSrc)
+          .then(function(response) {
+            if (!response.ok) throw new Error('Failed to load ' + jsonSrc);
+            return response.json();
+          })
+          .then(function(figure) {
+            var config = { responsive: true };
+            Plotly.newPlot(plotId, figure.data, figure.layout, config);
+          })
+          .catch(function(err) {
+            console.error('Plotly JSON error:', err);
+            document.getElementById(plotId).innerHTML = '<p style="color: red;">Error loading plot: ' + err.message + '</p>';
+          });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', renderPlot);
+      } else {
+        renderPlot();
+      }
+    })();
+  </script>
+  {{ with .Get "caption" }}<p class="plot-caption">{{ . }}</p>{{ end }}
+</div>
