@@ -9,7 +9,7 @@
 <br />
 <div align="center">
   <h1>APS Journal Theme</h1>
-  <img src="static/images/screenshot.png" alt="Screenshot">
+  <img src="static/images/screenshot.png" alt="Screenshot" style="border: 5px solid #000000;">
   <p>
     A Hugo theme for academic and journal-style publishing, inspired by American Physical Society formatting.
     <br />
