@@ -10,8 +10,8 @@
 <div align="center">
   <h1>APS Journal Theme</h1>
   <img src="static/images/screenshot.png" alt="Screenshot" style="border: 5px solid #000000;">
-  <p>
-    A Hugo theme for academic and journal-style publishing, inspired by American Physical Society formatting.
+  <p><i>
+    A Hugo theme for academic and journal-style publishing, inspired by American Physical Society formatting.</i>
     <br />
     <br />
     <a href="https://github.com/PersephoneKarnstein/Hugo-APS-Journal/issues/new?labels=bug">Report Bug</a>
